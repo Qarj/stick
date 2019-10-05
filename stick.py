@@ -68,7 +68,7 @@ if not os.path.exists(dest):
     print ('Memory stick not found!!!')
     print ('-------------------------')
     print (f'\nExpected to find: {dest}')
-    input ("\nPress Enter to continue...\n")
+    input ("\nPress Enter...\n")
     exit(1)
 
 missingSources = []
@@ -88,3 +88,5 @@ if missingSources:
     print ("\nCould not find the following sources:")
     for missing in missingSources:
         print (f'   {missing}')
+
+input ("\nPress Enter to finish...\n")
