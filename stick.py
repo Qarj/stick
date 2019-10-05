@@ -55,15 +55,23 @@ def find_drive_letter(driveName):
 
 config = configparser.ConfigParser()
 
-missingSources = []
-
 if os.path.exists('stick.ini'):
     config.read('stick.ini')
 else:
     config.read('test/test.ini')
 
 dest = config['DEFAULT']['dest']
-print (dest)
+
+if not os.path.exists(dest):
+    print ()
+    print ('-------------------------')
+    print ('Memory stick not found!!!')
+    print ('-------------------------')
+    print (f'\nExpected to find: {dest}')
+    input ("\nPress Enter to continue...\n")
+    exit(1)
+
+missingSources = []
 
 for section in config.sections():
     source = config[section]['source']
