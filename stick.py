@@ -72,12 +72,15 @@ if not os.path.exists(dest):
     exit(1)
 
 missingSources = []
+okSources = []
 
 for section in config.sections():
     source = config[section]['source']
     if not os.path.exists(source):
         missingSources.append(source)
         continue
+
+    okSources.append(source)
 
     destinationBasename = os.path.basename(source)
     cmd = f'robocopy "{source}" "{dest}\{destinationBasename}" /MIR /Z /R:2 /W:2 /J'
@@ -88,5 +91,9 @@ if missingSources:
     print ("\nCould not find the following sources:")
     for missing in missingSources:
         print (f'   {missing}')
+
+print ("\nUpdated from these sources:")
+for ok in okSources:
+    print (f'   {ok}')
 
 input ("\nPress Enter to finish...\n")
