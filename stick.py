@@ -5,7 +5,11 @@ import sys
 version = "0.1.0"
 
 config = configparser.ConfigParser()
-config.read('stick.ini')
+
+if os.path.exists('stick.ini'):
+    config.read('stick.ini')
+else:
+    config.read('test/test.ini')
 
 dest = config['DEFAULT']['dest']
 print (dest)
