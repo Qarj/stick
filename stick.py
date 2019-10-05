@@ -10,5 +10,7 @@ config.read('stick.ini')
 dest = config['DEFAULT']['dest']
 print (dest)
 
-for source in config.sections():
-    print (config[source]['source'])
+for section in config.sections():
+    source = config[section]['source']
+    cmd = f"robocopy {source} {dest} /L"
+    print (os.system(cmd))
