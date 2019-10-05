@@ -12,5 +12,7 @@ print (dest)
 
 for section in config.sections():
     source = config[section]['source']
-    cmd = f"robocopy {source} {dest} /L"
+    destination_basename = os.path.basename(source)
+    cmd = f"robocopy {source} {dest}\{destination_basename} /MIR /Z /R:2 /W:2 /J"
     print (os.system(cmd))
+    print ('---> ' + cmd)
