@@ -80,7 +80,7 @@ for section in config.sections():
         continue
 
     destinationBasename = os.path.basename(source)
-    cmd = f"robocopy {source} {dest}\{destinationBasename} /MIR /Z /R:2 /W:2 /J"
+    cmd = f'robocopy "{source}" "{dest}\{destinationBasename}" /MIR /Z /R:2 /W:2 /J'
     print (os.system(cmd))
     print ('---> ' + cmd)
 
